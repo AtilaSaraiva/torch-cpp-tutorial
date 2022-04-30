@@ -33,7 +33,7 @@ in stdenv.mkDerivation {
   installPhase = ''
     install -Dm755 dcgan $out/bin/dcgan
 
-    wrapProgram $out/bin/dcgan --prefix LD_LIBRARY_PATH : ${cudaStub}
+    #wrapProgram $out/bin/dcgan --prefix LD_LIBRARY_PATH : ${cudaStub}
   '';
 
   checkPhase = ''
