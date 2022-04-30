@@ -24,7 +24,7 @@ in stdenv.mkDerivation {
 
   nativeBuildInputs = [ cmake ninja makeWrapper ];
 
-  buildInputs = [ libtorch-bin cudaPackages.cudnn cudatoolkit_joined ];
+  buildInputs = [ libtorch-bin cudaPackages.cudnn cudaPackages.cudatoolkit ];
 
   cmakeFlags = [ "-DCUDA_TOOLKIT_ROOT_DIR=${cudatoolkit_joined}" ];
 
