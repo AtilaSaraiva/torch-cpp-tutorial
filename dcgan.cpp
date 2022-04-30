@@ -6,7 +6,7 @@
 torch::Device device(torch::kCUDA);
 
 int main() {
-  torch::Tensor tensor = torch::eye(3);
+  torch::Tensor tensor = torch::eye(3, device);
 
   float checkData[] = {
     1, 0, 0,

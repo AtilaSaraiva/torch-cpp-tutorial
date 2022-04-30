@@ -24,7 +24,7 @@ in stdenv.mkDerivation {
 
   nativeBuildInputs = [ cmake ninja makeWrapper ];
 
-  buildInputs = [ libtorch-bin cudaPackages.cudnn ];
+  buildInputs = [ libtorch-bin cudaPackages.cudnn cudatoolkit_joined ];
 
   cmakeFlags = [ "-DCUDA_TOOLKIT_ROOT_DIR=${cudatoolkit_joined}" ];
 
@@ -33,7 +33,7 @@ in stdenv.mkDerivation {
   installPhase = ''
     install -Dm755 dcgan $out/bin/dcgan
 
-    wrapProgram $out/bin/dcgan --prefix LD_LIBRARY_PATH : ${cudaStub}
+    #wrapProgram $out/bin/dcgan --prefix LD_LIBRARY_PATH : ${cudaStub}
   '';
 
   checkPhase = ''
