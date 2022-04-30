@@ -26,14 +26,14 @@ in stdenv.mkDerivation {
 
   buildInputs = [ libtorch-bin cudaPackages.cudnn cudaPackages.cudatoolkit ];
 
-  cmakeFlags = [ "-DCUDA_TOOLKIT_ROOT_DIR=${cudatoolkit_joined}" ];
+  cmakeFlags = [ "-DCUDA_TOOLKIT_ROOT_DIR=${cudaPackages.cudatoolkit}" ];
 
   doCheck = false;
 
   installPhase = ''
     install -Dm755 dcgan $out/bin/dcgan
 
-    #wrapProgram $out/bin/dcgan --prefix LD_LIBRARY_PATH : ${cudaStub}
+    wrapProgram $out/bin/dcgan --prefix LD_LIBRARY_PATH : ${cudaStub}
   '';
 
   checkPhase = ''
